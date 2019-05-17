@@ -1,0 +1,15 @@
+package java0516;
+
+public class Marine2 extends Unit2 {
+
+	Marine2(int x, int y) {
+		super(x, y);
+	}
+
+	@Override
+	void move() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

@@ -1,0 +1,61 @@
+
+public class User extends Person{
+
+	int Max_books=0,unReturn_books=0,using_days=0;
+	boolean isBanned = false;
+	User(int age, String name) {
+		super(age, name);
+		// TODO Auto-generated constructor stub
+	}
+
+	void display_info() {
+		System.out.println("-------정     보-------");
+		intro();
+		System.out.println();
+		System.out.println("최대 대출 권수 : "+Max_books);
+		System.out.println("미반납 책 권수 (대출한 책 권수): "+unReturn_books);
+		System.out.println("대출 기간 : "+using_days);
+		System.out.println("-------------------");
+		System.out.println();
+	}
+	
+	public boolean isBanned() {
+		return isBanned;
+	}
+
+
+	public void setBanned(boolean isBanned) {
+		this.isBanned = isBanned;
+	}
+
+
+	void 대출() {
+		intro();
+		System.out.print("<대출");
+		if (Max_books > unReturn_books) {
+			unReturn_books++;
+		}else {
+			System.out.print("실패 - 최대 대출 권수에 도달하였습니다.>");
+		}
+		System.out.println(">");
+	}
+	void 반납() {
+		intro();
+		System.out.print("<반납");
+		if (unReturn_books>0) {
+			unReturn_books--;
+		}else {
+			System.out.print("불가 - 더이상 반납할 책이 없습니다.>");
+		}
+		System.out.println(">");
+	}
+	void 조회() {
+		intro();
+		System.out.println("<조회>");
+	}
+	void 예약() {
+		intro();
+		System.out.println("<예약>");
+	}
+
+}

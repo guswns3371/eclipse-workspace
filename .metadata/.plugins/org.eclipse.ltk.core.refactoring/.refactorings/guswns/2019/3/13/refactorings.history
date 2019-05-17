@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;jumsu&apos; in &apos;guswns3.test03.name(...)&apos; to &apos;a&apos;&#x0D;&#x0A;- Original project: &apos;guswns&apos;&#x0D;&#x0A;- Original element: &apos;guswns3.test03.name(int[]).jumsu&apos;&#x0D;&#x0A;- Renamed element: &apos;jumsu&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;jumsu&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;guswns3{test03.java[test03~name~\[I@jumsu!346!356!352!356!\[I!0!true" name="a" references="true" stamp="1553733902656" version="1.0"/>
+</session>

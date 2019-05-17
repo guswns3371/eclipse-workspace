@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;java0516.ㅋㄷ미ㅐㅅ&apos; to &apos;Zealot&apos;&#x0D;&#x0A;- Original project: &apos;java0516&apos;&#x0D;&#x0A;- Original element: &apos;java0516.ㅋㄷ미ㅐㅅ&apos;&#x0D;&#x0A;- Renamed element: &apos;java0516.Zealot&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ㅋㄷ미ㅐㅅ&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;java0516{ㅋㄷ미ㅐㅅ.java[ㅋㄷ미ㅐㅅ" matchStrategy="1" name="Zealot" qualified="false" references="true" similarDeclarations="false" stamp="1557965985383" textual="false" version="1.0"/>
+</session>

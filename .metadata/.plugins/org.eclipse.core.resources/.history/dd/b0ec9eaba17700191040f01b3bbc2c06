@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class main {
+
+	static Scanner input = new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int user_menu_num,admin_menu_num;
+		System.out.print("사용자 ==> 1, 관리자 ==> 2 : ");
+		int who = input.nextInt();
+		switch (who) {
+		case 1:
+					
+			do {
+				user_menu_num = user_menu();
+			} while (user_menu_num>=1 || user_menu_num<=5);
+			break;
+
+		case 2:
+			do {
+				admin_menu_num = admin_menu();
+			} while (admin_menu_num>=1 || admin_menu_num<=4);
+			break;
+		}
+
+		
+		
+		input.close();
+	}
+
+	static int user_menu() {
+		System.out.println("*********************");
+		System.out.println("      1.대    출                   ");
+		System.out.println("      2.반    납                   ");
+		System.out.println("      3.조    회                   ");
+		System.out.println("      4.예    약                   ");
+		System.out.println("      5.exit         ");
+		System.out.println("*********************");
+		System.out.print("input menu number : ");
+		int num = input.nextInt();
+		
+		return num;
+	}
+	
+	static int admin_menu() {
+		System.out.println("*********************");
+		System.out.println("      1.대    출                   ");
+		System.out.println("      2.반    납                   ");
+		System.out.println("      3.책목록 관리             ");
+		System.out.println("      4.exit         ");
+		System.out.println("*********************");
+		
+		System.out.print("input menu number : ");
+		int num = input.nextInt();
+		
+		return num;
+	}
+}

@@ -1,0 +1,41 @@
+
+public class User extends Person{
+
+	int Max_books,unReturn_books,using_days;
+	boolean isBanned = false;
+	User(int age, String name) {
+		super(age, name);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public boolean isBanned() {
+		return isBanned;
+	}
+
+
+	public void setBanned(boolean isBanned) {
+		this.isBanned = isBanned;
+	}
+
+
+	void 대출() {
+		whoami();
+		System.out.println("대출");
+		unReturn_books++;
+	}
+	void 반납() {
+		whoami();
+		System.out.println("반납");
+		unReturn_books--;
+	}
+	void 조회() {
+		whoami();
+		System.out.println("조회");
+	}
+	void 예약() {
+		whoami();
+		System.out.println("예약");
+	}
+
+}

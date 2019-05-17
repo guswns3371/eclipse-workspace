@@ -1,0 +1,16 @@
+
+public class Admin extends Person{
+
+	
+	Admin(int age, String name) {
+		super(age, name);
+		// TODO Auto-generated constructor stub
+	}
+	void 대출제제여부() {
+		System.out.println("대출 제제");
+	}
+	void 사용자_배열정보() {
+		System.out.println("사용자 배열 정보 작성");
+	}
+
+}

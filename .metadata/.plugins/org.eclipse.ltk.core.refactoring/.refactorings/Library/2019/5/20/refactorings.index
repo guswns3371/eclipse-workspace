@@ -1,0 +1,16 @@
+1557973821899	Rename local variable 'input'
+1557984266204	Delete element
+1557984268349	Delete element
+1557987899834	Rename field 'Stu_num'
+1557987907984	Rename field 'Major'
+1557987916341	Rename local variable 'Stu_num'
+1557987920859	Rename local variable 'Major'
+1557987930727	Rename field 'Major'
+1557987936941	Rename local variable 'Major'
+1557999688512	Rename method 'whoami'
+1558023959830	Rename method '책_대출'
+1558023979847	Rename method '책_반납'
+1558024327986	Rename method '대출'
+1558024334033	Rename method '반납'
+1558024340428	Rename method '조회'
+1558024344924	Rename method '예약'

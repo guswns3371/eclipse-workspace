@@ -1,0 +1,57 @@
+
+public class Book {
+	String name,author;
+	boolean isOccupied = false;
+	int num,occupied_num=0,index;
+	
+	public Book(int index, String name, String author, int num) {
+		this.index = index;
+		this.name = name;
+		this.author = author;
+		this.num = num;
+	}
+	void intro() {
+		System.out.print("책 "+name+" : ");
+	}
+	void book_info() {
+		System.out.println("-------책  정  보-------");
+		System.out.println("책 이름 : "+name);
+		System.out.println("책 저자 : "+author);
+		System.out.println("총 권수 : "+num);
+		System.out.println("대출중인 책 권수 : "+occupied_num);
+		System.out.println("-------------------");
+		System.out.println();
+	}
+
+	public boolean isOccupied() {
+		System.out.println("("+occupied_num+"/"+num+") 권 대출 중");
+		return isOccupied;
+	}
+
+	public void 책_대출() {
+		intro();
+		if (num> occupied_num) {
+			occupied_num++;
+			System.out.print("<대출 완료 => 현재"+num+"권 중 "+occupied_num+"권 대출 중");
+		}else {
+			System.out.print("<대출불가능 -"+num+"권 중 "+occupied_num+"권 대출 중");
+		}
+		System.out.println(">");
+		isOccupied = true;
+	}
+	
+	public void 책_반납() {
+		intro();
+		if (occupied_num>0) {
+			occupied_num--;
+			System.out.print("<반납 완료 => 현재"+num+"권 중 "+occupied_num+"권 대출 중");
+		}else {
+			System.out.print("<대출중인 책이 없습니다.");
+			isOccupied = false;
+		}
+		System.out.println(">");
+		
+	}
+	
+	
+}

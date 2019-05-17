@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;java_0502.SOngFileRead&apos; to &apos;SongFileRead&apos;&#x0D;&#x0A;- Original project: &apos;java_0502&apos;&#x0D;&#x0A;- Original element: &apos;java_0502.SOngFileRead&apos;&#x0D;&#x0A;- Renamed element: &apos;java_0502.SongFileRead&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SOngFileRead&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;java_0502{SOngFileRead.java[SOngFileRead" matchStrategy="1" name="SongFileRead" qualified="false" references="true" similarDeclarations="false" stamp="1556759642522" textual="false" version="1.0"/>
+</session>

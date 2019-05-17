@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Exercise/Exercise.iml" filepath="$PROJECT_DIR$/Exercise/Exercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Library/Library.iml" filepath="$PROJECT_DIR$/Library/Library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guswns/guswns.iml" filepath="$PROJECT_DIR$/guswns/guswns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hw1/hw1.iml" filepath="$PROJECT_DIR$/hw1/hw1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java0418/java0418.iml" filepath="$PROJECT_DIR$/java0418/java0418.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java0516/java0516.iml" filepath="$PROJECT_DIR$/java0516/java0516.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_0404/java_0404.iml" filepath="$PROJECT_DIR$/java_0404/java_0404.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_0411/java_0411.iml" filepath="$PROJECT_DIR$/java_0411/java_0411.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_0502/java_0502.iml" filepath="$PROJECT_DIR$/java_0502/java_0502.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_test_preparation/java_test_preparation.iml" filepath="$PROJECT_DIR$/java_test_preparation/java_test_preparation.iml" />
+    </modules>
+  </component>
+</project>

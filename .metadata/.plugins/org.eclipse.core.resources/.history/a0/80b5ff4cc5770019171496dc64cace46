@@ -1,0 +1,249 @@
+import java.util.Scanner;
+
+public class main {
+
+	static Scanner input = new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int user_menu_num = 0,admin_menu_num=0,age;
+		String name,major;
+		Student student = null;
+		Faculty faculty = null;
+		Admin admin = null;
+		
+		System.out.print("사용자 ==> 1, 관리자 ==> 2 : ");
+		int who = input.nextInt();
+		switch (who) {
+		case 1:
+				System.out.print("학생 ==> 1 , 교직원 ==> 2 :");
+				int who2 = input.nextInt();
+				switch (who2) {
+				case 1:
+					System.out.print("이름을 입력하세요 : ");
+					name = input.next();
+					System.out.print("나이를 입력하세요 : ");
+					age = input.nextInt();
+					System.out.print("학과를 입력하세요 : ");
+					major = input.next();
+					System.out.print("학번을 입력하세요 : ");
+					String stu_num = input.next();
+					student = new Student(age, name, stu_num, major);
+					
+					break;
+				case 2:
+					System.out.print("이름을 입력하세요 : ");
+					name = input.next();
+					System.out.print("나이를 입력하세요 : ");
+					age = input.nextInt();
+					System.out.print("담당 학과를 입력하세요 : ");
+					major = input.next();
+					faculty = new Faculty(age, name, major);
+					break;
+
+				}
+				for(;;) {
+					user_menu_num = user_menu();
+					
+					if (student == null) {
+						faculty_act(faculty, user_menu_num);
+					}else if (student != null) {
+						student_act(student, user_menu_num);
+					}
+					
+					if (user_menu_num==5) {
+						break;
+					}else if (user_menu_num>5 || user_menu_num <1) {
+						System.out.println("입력값 오류");
+					}
+				}
+			break;
+
+		case 2:
+				System.out.print("이름을 입력하세요 : ");
+				name = input.next();
+				System.out.print("나이를 입력하세요 : ");
+				age = input.nextInt();
+				admin = new Admin(age, name);
+				
+				for(;;) {
+					admin_menu_num = admin_menu();
+					
+					admin_act(admin, admin_menu_num);
+					
+					if (admin_menu_num==4) {
+						break;
+					}else if (admin_menu_num>4 || admin_menu_num <1) {
+						System.out.println("입력값 오류");
+					}
+				}			
+			break;
+		}
+
+//		if (admin==null) {
+//			if (student==null) {
+//				switch (user_menu_num) {
+//				case 1:
+//					faculty.대출();
+//					break;
+//				case 2:
+//					faculty.반납();
+//					break;
+//				case 3:
+//					faculty.조회();
+//					break;
+//				case 4:
+//					faculty.예약();
+//					break;
+//				case 5:
+//					faculty.나가기();
+//					break;
+//				default:
+//					System.out.println("error");
+//					break;
+//				}
+//				faculty.display_info();
+//			}else if (student !=null) {
+//				switch (user_menu_num) {
+//				case 1:
+//					student.대출();
+//					break;
+//				case 2:
+//					student.반납();
+//					break;
+//				case 3:
+//					student.조회();
+//					break;
+//				case 4:
+//					student.예약();
+//					break;
+//				case 5:
+//					student.나가기();
+//					break;
+//				default:
+//					System.out.println("error");
+//					break;
+//				}
+//				student.display_info();
+//			}
+//		}else if (admin !=null) {
+//			switch (admin_menu_num) {
+//			case 1:
+//				admin.대출처리();
+//				break;
+//			case 2:
+//				admin.반납처리();
+//				break;
+//			case 3:
+//				admin.사용자_배열정보();
+//				break;
+//			case 4:
+//				admin.나가기();
+//				break;
+//			default:
+//				System.out.println("error");
+//				break;
+//			}
+//		}
+	
+		
+		
+		input.close();
+	}
+
+	static int user_menu() {
+		System.out.println("*********************");
+		System.out.println("      1.대    출                   ");
+		System.out.println("      2.반    납                   ");
+		System.out.println("      3.조    회                   ");
+		System.out.println("      4.예    약                   ");
+		System.out.println("      5.exit         ");
+		System.out.println("*********************");
+		System.out.print("input menu number : ");
+		int num = input.nextInt();
+		
+		return num;
+	}
+	
+	static int admin_menu() {
+		System.out.println("*********************");
+		System.out.println("      1.대    출                   ");
+		System.out.println("      2.반    납                   ");
+		System.out.println("      3.책목록 관리             ");
+		System.out.println("      4.exit         ");
+		System.out.println("*********************");
+		
+		System.out.print("input menu number : ");
+		int num = input.nextInt();
+		
+		return num;
+	}
+	
+	static void student_act(Student student, int user_menu_num) {
+		switch (user_menu_num) {
+		case 1:
+			student.대출();
+			break;
+		case 2:
+			student.반납();
+			break;
+		case 3:
+			student.조회();
+			break;
+		case 4:
+			student.예약();
+			break;
+		case 5:
+			student.나가기();
+			break;
+		default:
+			System.out.println("error");
+			break;
+		}
+		student.display_info();
+	}
+	
+	static void faculty_act(Faculty faculty, int user_menu_num ) {
+		switch (user_menu_num) {
+		case 1:
+			faculty.대출();
+			break;
+		case 2:
+			faculty.반납();
+			break;
+		case 3:
+			faculty.조회();
+			break;
+		case 4:
+			faculty.예약();
+			break;
+		case 5:
+			faculty.나가기();
+			break;
+		default:
+			System.out.println("error");
+			break;
+		}
+		faculty.display_info();
+	}
+	
+	static void admin_act(Admin admin, int admin_menu_num) {
+		switch (admin_menu_num) {
+		case 1:
+			admin.대출처리();
+			break;
+		case 2:
+			admin.반납처리();
+			break;
+		case 3:
+			admin.사용자_배열정보();
+			break;
+		case 4:
+			admin.나가기();
+			break;
+		default:
+			System.out.println("error");
+			break;
+		}
+	}
+}

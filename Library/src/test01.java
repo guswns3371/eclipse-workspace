@@ -4,16 +4,9 @@ public class test01 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner in = new Scanner(System.in);
-		
-		System.out.print("사용자 ==> 1, 관리자 ==> 2 : ");
-		int no = in.nextInt();
-		
-		if (no ==1) {
-			while(user_menu())
-				;
-		}
-		in.close();
+		Book book = new Book("book.bin");
+		book.inputBookInfo();
+		book.readSongNameInFile();
 	}
 	
 	static boolean user_menu() {
@@ -42,6 +35,7 @@ public class test01 {
 		}
 //		in.close();
 		return ret;
+
 	}
 
 	static void admin_menu() {

@@ -1,66 +1,93 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class Book {
-	String name,author;
-	boolean isOccupied = false;
-	int num,occupied_num=0,index;
+	String book_fn;
+	final int recordSize = 65;
+//	index=10 , bookname =30 , 대출(데출자, 반납일)=10, 예약 =10바이트 => 총 50바이트
+	byte[] oneLine = new byte[recordSize];
+	final static byte paddingChar = 0x41;
+	FileOutputStream out = null;
 	
-	public Book(int index, String name, String author, int num) {
-		this.index = index;
-		this.name = name;
-		this.author = author;
-		this.num = num;
-	}
-	void intro() {
-		System.out.print("[책] "+index+". "+name+" | "+author+" : ");
-	}
-	void 책정보() {
-		System.out.println("-------책  정  보-------");
-		System.out.println("책 인덱스 : "+index);
-		System.out.println("책 이름 : "+name);
-		System.out.println("책 저자 : "+author);
-		System.out.println("총 권수 : "+num);
-		System.out.println("대출중인 책 권수 : "+occupied_num);
-		System.out.println("-------------------");
-		System.out.println();
+	
+	 Book(String book_fn) {
+		this.book_fn = book_fn;
 	}
 
-	public boolean isOccupied() {
-		System.out.println("("+occupied_num+"/"+num+") 권 대출 중");
-		return isOccupied;
-	}
 
-	public boolean 책_대출가능성() {
-		boolean b = false;
-		intro();
-		if (num> occupied_num) {
-			occupied_num++;
-			System.out.print("<대출 완료 => 현재 "+num+"권 중 "+occupied_num+"권 대출 중");
-			b = true;
-		}else {
-			System.out.print("<대출 불가능 - "+num+"권 중 "+occupied_num+"권 대출 중");
-			b = false;
+
+	public void inputBookInfo() {
+//		도서정보 입력
+		 String cont = "y";
+		 String bookIdx = "",bookName="",bookDae="",bookYea="",bookExp="";
+		 byte[] oneRecord = new byte[recordSize];
+		 Scanner in = new Scanner(System.in);
+		 
+		 try {
+			 out = new FileOutputStream(book_fn,false);
+			 while(cont.compareTo("y") == 0) {
+//			index=10 , bookname =30 , 대출(대출자=10, 반납일=5) = 15, 예약 =10바이트 => 총 60바이트
+
+				 writeAtoZ(in, oneRecord, bookIdx, "책 번호", 0, 10);
+				 writeAtoZ(in, oneRecord, bookName,"책 이름", 9, 30);
+				 writeAtoZ(in, oneRecord, bookDae, "책 대출자 이름", 39, 10);
+				 writeAtoZ(in, oneRecord, bookYea, "책 예약자 이름", 49, 10);
+				 writeAtoZ(in, oneRecord, bookExp, "책 반납일", 59, 5);
+				 out.write(oneRecord);
+				System.out.println("Continue? (y/n)");
+				cont = in.nextLine();
+			 }
+			 
+			 out.close();
+		} catch (IOException e) {
+			// TODO: handle exception
 		}
-		System.out.println(">");
-		
-		return b;
-	}
-	
-	public boolean 책_반납가능성() {
-		boolean b = false;
-		intro();
-		if (occupied_num>0) {
-			occupied_num--;
-			System.out.print("<반납 완료 => 현재"+num+"권 중 "+occupied_num+"권 대출 중");
-			b = true;
-		}else {
-			System.out.print("<반납 불가능 - 대출중인 책이 없습니다.");
-			b = false;
-		}
-		System.out.println(">");
-		
-		return b;
 
+		 
+//		 in.close();
 	}
 	
+	static void writeAtoZ(Scanner in, byte[] oneRecord, String book_,String book_str,int from,int limit) throws UnsupportedEncodingException {
+		 for(;;) {
+			 System.out.println(book_str+" ("+limit+"이내) : ");
+			 book_ = in.nextLine(); 
+			 if (book_.length()<=limit) {
+				 for (int i = from; i < from+book_.length(); i++) {
+					oneRecord[i] = (byte) book_.charAt(i-from);
+				}
+				 for (int i = from+book_.length(); i <from+limit; i++) {
+					oneRecord[i]= paddingChar;
+				}
+				 byte[] b = new byte[1];
+				 for (int i= from; i<from+limit; i++){
+					 b[0] = oneRecord[i];
+					 System.out.print(new String(b, StandardCharsets.UTF_8));
+				 }
+				break;
+			 }
+			 else {
+				 System.out.println(book_str+"(이)가 "+limit+"자가 넘습니다");
+			 }
+		 }
+	}
+	
+	 public void readSongNameInFile() {
+		 
+		 FileInputStream in  = null;
+		 try {
+			in = new FileInputStream(book_fn);
+			byte[] oneRecord = new byte[recordSize];
+			in.read(oneRecord);
+			String str = new String(oneRecord,"utf-8");
+			System.out.println(str);
+		 	in.close();
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+	 }
 	
 }

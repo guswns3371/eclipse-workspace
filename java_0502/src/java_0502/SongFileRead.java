@@ -5,12 +5,12 @@ import java.io.IOException;
 
 public class SongFileRead {
 	String fn;
-	final int recordSizeByte=50;
-	 SongFileRead(String fn) {
+	final int recordSizeByte=60;
+	public SongFileRead(String fn) {
 		this.fn = fn;
 	}
 	 
-	 void readSongNameInFile() {
+	 public void readSongNameInFile() {
 		 
 		 FileInputStream in  = null;
 		 try {

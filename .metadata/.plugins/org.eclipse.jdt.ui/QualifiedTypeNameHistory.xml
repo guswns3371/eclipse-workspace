@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java_0404.TimeNow"/>
-<fullyQualifiedTypeName name="java_0411.Student"/>
-<fullyQualifiedTypeName name="java.lang.Override"/>
-<fullyQualifiedTypeName name="java_0411.Notebook"/>
-<fullyQualifiedTypeName name="java_0411.Human"/>
-<fullyQualifiedTypeName name="hw1.StWeight"/>
-<fullyQualifiedTypeName name="hw1.Calender"/>
-<fullyQualifiedTypeName name="hw1.FileEncrypt"/>
-<fullyQualifiedTypeName name="java0418.Dog"/>
-<fullyQualifiedTypeName name="java0418.Dove"/>
 <fullyQualifiedTypeName name="java0418.Animal"/>
 <fullyQualifiedTypeName name="java0418.Human"/>
 <fullyQualifiedTypeName name="java0418.Student"/>
@@ -54,10 +44,20 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
 <fullyQualifiedTypeName name="Person"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="Admin"/>
 <fullyQualifiedTypeName name="Student"/>
 <fullyQualifiedTypeName name="Faculty"/>
-<fullyQualifiedTypeName name="Book"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java0523.Car"/>
+<fullyQualifiedTypeName name="javax.rmi.CORBA.Util"/>
+<fullyQualifiedTypeName name="kr.soen.kim.UtilClass"/>
+<fullyQualifiedTypeName name="kr.soen.kim.Car"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="java0523.Human"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+<fullyQualifiedTypeName name="java.text.Format.Field"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Field"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="Book"/>
 </qualifiedTypeNameHistroy>

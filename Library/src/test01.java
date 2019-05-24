@@ -5,8 +5,8 @@ public class test01 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Book book = new Book("book.bin");
-		book.inputBookInfo();
-		book.readSongNameInFile();
+//		book.inputBookInfo();
+		book.readBookInfoFile();
 	}
 	
 	static boolean user_menu() {

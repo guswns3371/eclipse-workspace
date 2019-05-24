@@ -10,8 +10,8 @@ public class Book {
 	final int recordSize = 65;
 //	index=10 , bookname =30 , 대출(데출자, 반납일)=10, 예약 =10바이트 => 총 50바이트
 	byte[] oneLine = new byte[recordSize];
-	final static byte paddingChar = 0x41;
-	FileOutputStream out = null;
+	final static byte paddingChar = 0x40;
+
 	
 	
 	 Book(String book_fn) {
@@ -20,23 +20,22 @@ public class Book {
 
 
 
-	public void inputBookInfo() {
+	 void inputBookInfo() {
 //		도서정보 입력
 		 String cont = "y";
 		 String bookIdx = "",bookName="",bookDae="",bookYea="",bookExp="";
 		 byte[] oneRecord = new byte[recordSize];
 		 Scanner in = new Scanner(System.in);
-		 
+		 FileOutputStream out;
 		 try {
-			 out = new FileOutputStream(book_fn,false);
+			 out = new FileOutputStream(book_fn,true);
 			 while(cont.compareTo("y") == 0) {
-//			index=10 , bookname =30 , 대출(대출자=10, 반납일=5) = 15, 예약 =10바이트 => 총 60바이트
-
+//			index=10 , bookname =30 ,대출자=10 ,예약자 = 10바이트, 반납일=5 >>> 총 60바이트
 				 writeAtoZ(in, oneRecord, bookIdx, "책 번호", 0, 10);
-				 writeAtoZ(in, oneRecord, bookName,"책 이름", 9, 30);
-				 writeAtoZ(in, oneRecord, bookDae, "책 대출자 이름", 39, 10);
-				 writeAtoZ(in, oneRecord, bookYea, "책 예약자 이름", 49, 10);
-				 writeAtoZ(in, oneRecord, bookExp, "책 반납일", 59, 5);
+				 writeAtoZ(in, oneRecord, bookName,"책 이름", 10, 30);
+				 writeAtoZ(in, oneRecord, bookDae, "책 대출자 이름", 40, 10);
+				 writeAtoZ(in, oneRecord, bookYea, "책 예약자 이름", 50, 10);
+				 writeAtoZ(in, oneRecord, bookExp, "책 반납일", 60, 5);
 				 out.write(oneRecord);
 				System.out.println("Continue? (y/n)");
 				cont = in.nextLine();
@@ -51,15 +50,17 @@ public class Book {
 //		 in.close();
 	}
 	
-	static void writeAtoZ(Scanner in, byte[] oneRecord, String book_,String book_str,int from,int limit) throws UnsupportedEncodingException {
+	private static void writeAtoZ(Scanner in, byte[] oneRecord, String book_, String book_str, int from, int limit) throws UnsupportedEncodingException {
 		 for(;;) {
-			 System.out.println(book_str+" ("+limit+"이내) : ");
-			 book_ = in.nextLine(); 
+			 System.out.println(book_str+" ("+limit+"자 이내) : ");
+			 book_ = in.nextLine();
 			 if (book_.length()<=limit) {
+			 	byte[] source = book_.getBytes(StandardCharsets.UTF_8);
 				 for (int i = from; i < from+book_.length(); i++) {
-					oneRecord[i] = (byte) book_.charAt(i-from);
+//					oneRecord[i] = (byte) book_.getBytes()[(i-from)];
+					oneRecord[i] = source[(i-from)];
 				}
-				 for (int i = from+book_.length(); i <from+limit; i++) {
+				 for (int i = from+book_.length(); i < from+limit; i++) {
 					oneRecord[i]= paddingChar;
 				}
 				 byte[] b = new byte[1];
@@ -67,6 +68,7 @@ public class Book {
 					 b[0] = oneRecord[i];
 					 System.out.print(new String(b, StandardCharsets.UTF_8));
 				 }
+				 System.out.println();
 				break;
 			 }
 			 else {
@@ -75,19 +77,82 @@ public class Book {
 		 }
 	}
 	
-	 public void readSongNameInFile() {
+	 void readBookInfoFile() {
 		 
-		 FileInputStream in  = null;
+		 FileInputStream in;
 		 try {
 			in = new FileInputStream(book_fn);
 			byte[] oneRecord = new byte[recordSize];
-			in.read(oneRecord);
-			String str = new String(oneRecord,"utf-8");
-			System.out.println(str);
+		 	int len=0,total=0;
+		 	for (;;){
+				len = in.read(oneRecord);
+				if (len == -1)
+					break;
+				total += len;
+			}
+			in.close();
+
+		 	in = new FileInputStream(book_fn);
+		 	byte[] newrecord = new byte[total];
+		 	String[] booklist = new String[total/recordSize];
+		 	in.read(newrecord);
+			String str = new String(newrecord, StandardCharsets.UTF_8);
+
+			StringBuilder s= new StringBuilder();
+			int a=0;
+			for (int i =0; i<str.length(); i++){
+				s.append(str.charAt(i));
+				if ((i+1) % recordSize == 0){
+					booklist[a] = s.toString();
+					s = new StringBuilder();
+					a++;
+				}
+			}
+			 System.out.println(
+					 "책 번호   "+" | "+
+					 "책 제목                       "+" | "+
+					 "대출자    "+" | "+
+					 "예약자    "+" | "+
+					 "반납일"+"| "
+			 );
+			 for (String str2: booklist) {
+			 	String idx="",name="",dae="",yea="",exp="";
+			 	for (int i=0;i<str2.length(); i++){
+			 		String A = Character.toString(str2.charAt(i));
+			 		if (A.equals("@"))
+			 			A=" ";
+			 		if (i < 10)
+			 			idx += A;
+					if (i>=10 && i<40)
+						name += A;
+					if (i>=40 && i<50)
+						dae += A;
+					if (i>=50 && i<60)
+						yea += A;
+					if (i>=60 && i<65)
+						exp += A;
+				}
+				 System.out.println(
+				 		idx+" | "+
+						name+" | "+
+						dae+" | "+
+						yea+" | "+
+						exp+" | "
+				 );
+			 }
+
+
 		 	in.close();
+
 		} catch (IOException e) {
 			// TODO: handle exception
 		}
 	 }
-	
+
+	  void EditBookInfoFile(){
+
+	 }
+
+
+
 }
